@@ -8,12 +8,12 @@
  * @author    Steve Maraspin <steve@mvlabs.it>
  * @package   MvlabsZendSkeletonApplication
  */
-
 return array(
 
     'modules' => array(
-                       'Application',
-                      ),
+    				'MvlabsLumber',	// Takes care of error logging and mailing
+    				'Application',
+                ),
 
     // These are various options for the listeners attached to the ModuleManager
     'module_listener_options' => array(
@@ -26,12 +26,16 @@ return array(
             './vendor',
         ),
 
+        // This is dynamically set in index.php
+        // 'mvlabs_environment_name' => 'production'
+
+        // Moved to index.php - allowing env specific conf files to be loaded
         // An array of paths from which to glob configuration files after
         // modules are loaded. These effectively override configuration
         // provided by modules themselves. Paths may use GLOB_BRACE notation.
-        'config_glob_paths' => array(
-            'config/autoload/{,*.}{global,local}.php',
-        ),
+        // 'config_glob_paths' => array(
+        //    'config/autoload/{,*.}{global,local}.php',
+        // ),
 
         // Whether or not to enable a configuration cache.
         // If enabled, the merged configuration will be cached and used in

@@ -25,11 +25,12 @@ return array(
 		 ),
 		*/
 
-		'mvlabs_environment' => array(
+		'mvlabs_environment_config' => array(
 
-			// here you should set the hostname of your production host(s)
-			// production configuration will be allowed to run there only!
-			'allowed_hosts' => array('my.production.host')
+			// hostname of production host(s) - only these will be allowed
+			// to run with production configuration
+			'allowed_hosts' => array('my.production.host'),
+
 		),
 
 );

@@ -13,66 +13,32 @@
 
 return array(
 
-
-		'service_manager' => array(
-				'abstract_factories' => array(
-						'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
-						'Zend\Log\LoggerAbstractServiceFactory',
-				),
-				'aliases' => array(
-						'translator' => 'MvcTranslator',
-				),
-		),
-
-		'translator' => array(
-				'translation_file_patterns' => array(
-
-						// Application Text Translations
-						array(
-								'type'     => 'gettext',
-								'base_dir' => __DIR__ . '/../../module/Application/resource/language/text',
-								'pattern'  => '%s.mo',
-						),
-
-				),
-		),
-
-
-		'mvlabs_environment' => array(
+		'mvlabs_environment_config' => array(
 
 			// Set this w/ the timezone of your running application
 			'timezone' => 'Europe/London',
 
-
-			// Available locales are listed here. Default(above) must be among them
-			'locale' => array(
-					'available' => array(
-							'en' => array('language' => 'en_US', 'name' => 'English'),
-							'it' => array('language' => 'it_IT', 'name' => 'Italiano'),
-							'es' => array('language' => 'es_ES', 'name' => 'Espanol'),
-					),
-					'default' => 'it',
-			),
-
+			// PHP ini settings
 			'php_settings' => array(
-					'error_reporting'  =>  E_ALL,
-					'display_errors' => 'Off',
-					'display_startup_errors' => 'Off',
+				'error_reporting'  =>  (E_ALL ^ E_NOTICE),
+				'display_errors' => 'Off',
+				'display_startup_errors' => 'Off',
 			),
 
 			'exceptions_from_errors' => true,
 			'recover_from_fatal' => true,
 			'fatal_errors_callback' => function($s_msg, $s_file, $s_line) {
 
-				// Override this param if you need special logging
-				// Default PHP logging is still going to work
 				return false;
 
 			},
+		),
 
-			// by default, there are no environment/host restrictions
-			'allowed_hosts' => null,
-
+		'service_manager' => array(
+				'abstract_factories' => array(
+						'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
+						'Zend\Log\LoggerAbstractServiceFactory',
+				),
 		),
 
 );
